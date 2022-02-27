@@ -4,6 +4,9 @@ class BabiesController < ApplicationController
   # GET /babies
   def index
     @babies = Baby.all
+    
+    @babies = @babies.filter_by_list_id(params[:list_id]) if params[:list_id].present?
+    @babies = @babies.filter_by_name(params[:name]) if params[:name].present?
 
     render json: @babies
   end
