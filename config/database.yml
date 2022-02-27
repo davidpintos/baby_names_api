@@ -24,6 +24,10 @@ default: &default
 development:
   <<: *default
   database: baby_names_api_development
+  host: localhost
+  port: 5432
+  user: postgres
+  password: test
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: baby_names_api_production
-  username: baby_names_api
-  password: <%= ENV["BABY_NAMES_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
